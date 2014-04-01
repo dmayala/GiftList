@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+    <title>Test</title>
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/knockout-3.1.0.js"></script>
+</head>
+    <body>
+        <h2>Gift List Editor</h2>
+        <p>You have asked for <span data-bind="text: gifts().length">&nbsp;</span> gift(s)</p>
+        <table>
+            <tbody data-bind="foreach: gifts">
+                <tr>
+                    <td>Gift Name: <input data-bind="value: Title" /></td>
+                    <td>Price: $ <input data-bind="value: Price" /></td>
+                    <td><a href="#" data-bind="click: $parent.deleteGift">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <button data-bind="click: addGift">Add Gift</button>
+
+
+
+        <script type="text/javascript">
+            var initialData = @Html.Raw(Json.Encode(Model));
+
+            var Gift = function (title, price) {
+                this.Title = title;
+                this.Price = price;
+            }
+
+            var ViewModel = function () {
+                var self = this;
+
+                // Values
+                self.gifts = ko.observableArray(initialData);
+
+                // Behaviors
+                self.addGift = function () {
+                    self.gifts.push(new Gift("", ""));
+                }
+
+                self.deleteGift = function (gift) {
+                    self.gifts.remove(gift);
+                }
+            }
+
+            ko.applyBindings(new ViewModel());
+        </script>
+    </body>
+</html>
