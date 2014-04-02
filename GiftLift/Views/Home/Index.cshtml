@@ -1,22 +1,28 @@
 ﻿<html>
 <head>
-    <title>Test</title>
-    <script src="~/scripts/jquery-1.10.2.js"></script>
-    <script src="~/scripts/knockout-3.1.0.js"></script>
+    <title>Gift List Editor</title>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/toastr.min.js"></script>
 </head>
     <body>
-        <h2>Gift List Editor</h2>
-        <p>You have asked for <span data-bind="text: gifts().length">&nbsp;</span> gift(s)</p>
-        <table>
-            <tbody data-bind="foreach: gifts">
-                <tr>
-                    <td>Gift Name: <input data-bind="value: Title" /></td>
-                    <td>Price: $ <input data-bind="value: Price" /></td>
-                    <td><a href="#" data-bind="click: $parent.deleteGift">Delete</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <button data-bind="click: addGift">Add Gift</button>
+        <form data-bind="submit: save">
+            <h2>Gift List Editor</h2>
+            <p>You have asked for <span data-bind="text: gifts().length">&nbsp;</span> gift(s)</p>
+            <table>
+                <tbody data-bind="foreach: gifts">
+                    <tr>
+                        <td>Gift Name: <input class="required" data-bind="value: Title, uniqueName: true" /></td>
+                        <td>Price: $ <input class="required" data-bind="value: Price, uniqueName: true" /></td>
+                        <td><a href="#" data-bind="click: $parent.deleteGift">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button data-bind="click: addGift">Add Gift</button>
+            <button type="submit" data-bind="enable: gifts().length > 0">Save</button>
+        </form>
 
 
 
@@ -42,9 +48,20 @@
                 self.deleteGift = function (gift) {
                     self.gifts.remove(gift);
                 }
+
+                self.save = function () {
+                    if($('form').valid()) {
+                        $.post(location.href, { gifts: ko.toJSON(self.gifts) }, function (response) {
+                            toastr.success(response.count + " item(s) saved!");
+                        });
+                    }
+                }
             }
 
             ko.applyBindings(new ViewModel());
+
+            $("form").validate();
+
         </script>
     </body>
 </html>

@@ -1,4 +1,5 @@
 ﻿using GiftList.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace GiftList.Controllers
                 new GiftModel { Title = "Long Cloak", Price = 78.25 }
             };
             return View(initialState);
+        }
+
+        [HttpPost]
+        public ActionResult Index([FromJson] IEnumerable<GiftModel> gifts)
+        {
+            // Can process the data any way we want here,
+            // e.g., further server-side validation, save to database, etc
+            return Json(new { count = gifts.Count() });
         }
     }
 }
