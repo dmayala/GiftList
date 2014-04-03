@@ -1,28 +1,52 @@
 ﻿<html>
 <head>
     <title>Gift List Editor</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/toastr.css" rel="stylesheet" />
+    <style>
+        .edit {
+            display: none;
+        }
+
+        .editing .edit {
+            display: block;
+        }
+
+        .editing .view {
+            display: none;
+        }
+    </style>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/knockout")
     <script src="~/Scripts/toastr.min.js"></script>
 </head>
     <body>
-        <form data-bind="submit: save">
-            <h2>Gift List Editor</h2>
-            <p>You have asked for <span data-bind="text: gifts().length">&nbsp;</span> gift(s)</p>
-            <table>
-                <tbody data-bind="foreach: gifts">
-                    <tr>
-                        <td>Gift Name: <input class="required" data-bind="value: Title, uniqueName: true" /></td>
-                        <td>Price: $ <input class="required" data-bind="value: Price, uniqueName: true" /></td>
-                        <td><a href="#" data-bind="click: $parent.deleteGift">Delete</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button data-bind="click: addGift">Add Gift</button>
-            <button type="submit" data-bind="enable: gifts().length > 0">Save</button>
-        </form>
+        <div class="container">
+            <form data-bind="submit: save">
+                <h2>Gift List Editor</h2>
+                <p>You have asked for <strong data-bind="text: gifts().length">&nbsp;</strong> gift(s)</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Gift Name</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: gifts">
+                        <tr data-bind="event: { dblclick: $parent.editItem}, css: { editing: ($parent.editing() && $data === $parent.selectedGift()) ? true : false }">
+                            <td><span class="view" data-bind="text: Title"></span><input class="form-control edit required" data-bind="value: Title, uniqueName: true" /></td>
+                            <td><span class="view">$ <span data-bind="text: Price"></span></span><input class="form-control edit required number" data-bind="value: Price, uniqueName: true" /></td>
+                            <td><a href="#" data-bind="click: $parent.deleteGift"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-default" data-bind="click: addGift">Add Gift</button>
+                <button class="btn btn-default" type="submit" data-bind="enable: gifts().length > 0">Save</button>
+            </form>
+        </div>
+        
 
 
 
@@ -39,6 +63,8 @@
 
                 // Values
                 self.gifts = ko.observableArray(initialData);
+                self.selectedGift = ko.observable();
+                self.editing = ko.observable(false); 
 
                 // Behaviors
                 self.addGift = function () {
@@ -48,6 +74,15 @@
                 self.deleteGift = function (gift) {
                     self.gifts.remove(gift);
                 }
+    
+                self.editItem = function(gift) {
+                    self.selectedGift(gift);
+                    self.editing(true); 
+                } 
+    
+                self.stopEditing = function() { 
+                    self.editing(false); 
+                } 
 
                 self.save = function () {
                     if($('form').valid()) {
@@ -60,7 +95,7 @@
 
             ko.applyBindings(new ViewModel());
 
-            $("form").validate();
+            $("form").validate({ignore: []});
 
         </script>
     </body>
