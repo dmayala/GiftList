@@ -20,6 +20,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/knockout")
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/application.js"></script>
 </head>
     <body>
         <div class="container">
@@ -47,56 +48,5 @@
             </form>
         </div>
         
-
-
-
-        <script type="text/javascript">
-            var initialData = @Html.Raw(Json.Encode(Model));
-
-            var Gift = function (title, price) {
-                this.Title = ko.observable(title);
-                this.Price = ko.observable(price)
-            }
-
-            var ViewModel = function () {
-                var self = this;
-
-                // Values
-                self.gifts = ko.observableArray(initialData);
-                self.selectedGift = ko.observable();
-                self.editing = ko.observable(false); 
-
-                // Behaviors
-                self.addGift = function () {
-                    self.gifts.push(new Gift("", ""));
-                }
-
-                self.deleteGift = function (gift) {
-                    self.gifts.remove(gift);
-                }
-    
-                self.editItem = function(gift) {
-                    self.selectedGift(gift);
-                    self.editing(true); 
-                } 
-    
-                self.stopEditing = function() { 
-                    self.editing(false); 
-                } 
-
-                self.save = function () {
-                    if($('form').valid()) {
-                        $.post(location.href, { gifts: ko.toJSON(self.gifts) }, function (response) {
-                            toastr.success(response.count + " item(s) saved!");
-                        });
-                    }
-                }
-            }
-
-            ko.applyBindings(new ViewModel());
-
-            $("form").validate({ignore: []});
-
-        </script>
     </body>
 </html>
