@@ -1,42 +1,45 @@
-initialData = [{'Title': 'Tall Hat', 'Price': 49.95}, {'Title': 'Long Cloak', 'Price': 78.25}]
+initialData = [
+  {
+    Title: "Tall Hat"
+    Price: 49.95
+  }
+  {
+    Title: "Long Cloak"
+    Price: 78.25
+  }
+]
+Gift = (title, price) ->
+  @Title = ko.observable(title)
+  @Price = ko.observable(price)
 
-class Gift
-  constructor: (title, price) ->
-    @.Title = ko.observable(title)
-    @.Price = ko.observable(price)
-
-convertedData = $.map(initialData, (a) ->
-  return new Gift(a.Title, a.Price)
-)
-
-class ViewModel
-  constructor: () ->
-    
-    # Values
-    @.gifts = ko.observableArray(convertedData)
-    @.selectedGift = ko.observable()
-    @.editing = ko.observable(false)
-
-    # Behaviors
-    @.addGift = =>
-      @.gifts.push(new Gift("",""))
+ViewModel = ->
+  self = this
   
-    @.deleteGift = (gift) =>
-      @.gifts.remove(gift)
+  # Values
+  self.gifts = ko.observableArray(initialData)
+  self.selectedGift = ko.observable()
+  self.editing = ko.observable(false)
+  
+  # Behaviors
+  self.addGift = ->
+    self.gifts.push new Gift("", "")
 
-    @.editItem = (gift) =>
-      @.selectedGift(gift)
-      @.editing(true)
+  self.deleteGift = (gift) ->
+    self.gifts.remove gift
 
-    @.stopediting = =>
-      @.editing(false)
+  self.editItem = (gift) ->
+    self.selectedGift gift
+    self.editing true
 
-    @.save = =>
-      if ($('form').valid())
-        $.post(location.href, { 'gifts': ko.toJSON(@.gifts) }, (response) ->
-          toastr.success(response.count + ' item(s) saved!'))
+  self.stopEditing = ->
+    self.editing false
 
-$ ->
-  ko.applyBindings(new ViewModel())
-  $('form').validate({'ignore': []})
+  self.save = ->
+    if $("form").valid()
+      $.post location.href,
+        gifts: ko.toJSON(self.gifts)
+      , (response) ->
+        toastr.success response.count + " item(s) saved!"
 
+ko.applyBindings new ViewModel()
+$("form").validate ignore: []

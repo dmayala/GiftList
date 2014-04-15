@@ -69,11 +69,12 @@
 
   })();
 
-  $(function() {
-    ko.applyBindings(new ViewModel());
-    return $('form').validate({
-      'ignore': []
-    });
+  $(function () {
+      ko.applyBindings(new ViewModel());
+
+      $("form").validate({
+          ignore: []
+      });
   });
 
 }).call(this);

@@ -3,19 +3,7 @@
     <title>Gift List Editor</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/toastr.css" rel="stylesheet" />
-    <style>
-        .edit {
-            display: none;
-        }
-
-        .editing .edit {
-            display: block;
-        }
-
-        .editing .view {
-            display: none;
-        }
-    </style>
+    <link href="~/Content/site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/knockout")
@@ -37,8 +25,8 @@
                     </thead>
                     <tbody data-bind="foreach: gifts">
                         <tr data-bind="event: { dblclick: $parent.editItem}, css: { editing: ($parent.editing() && $data === $parent.selectedGift()) ? true : false }">
-                            <td><span class="view" data-bind="text: Title"></span><input class="form-control edit required" data-bind="value: Title, valueUpdate: 'afterkeydown', uniqueName: true" /></td>
-                            <td><span class="view">$ <span data-bind="text: Price"></span></span><input class="form-control edit required number" data-bind="value: Price, valueUpdate: 'afterkeydown', uniqueName: true" /></td>
+                            <td><span class="view" data-bind="text: Title"></span><input class="form-control edit required" data-bind="value: Title, valueUpdate: 'afterkeydown', uniqueName: true" required /></td>
+                            <td><span class="view">$ <span data-bind="text: Price"></span></span><input class="form-control edit required number" data-bind="value: Price, valueUpdate: 'afterkeydown', uniqueName: true" required /></td>
                             <td><a href="#" data-bind="click: $parent.deleteGift"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                     </tbody>
