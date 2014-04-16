@@ -5,8 +5,9 @@ using System.Web;
 
 namespace GiftList.Models
 {
-    public class GiftModel
+    public class Gift
     {
+        public long Id { get; set; }
         public string Title { get; set; }
         public double Price { get; set; }
     }
