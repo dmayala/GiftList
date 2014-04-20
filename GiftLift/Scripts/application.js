@@ -2,15 +2,16 @@
 (function() {
   var Gift, ViewModel, convertedData, initialData;
 
-  initialData = [
-    {
-      'Title': 'Tall Hat',
-      'Price': 49.95
-    }, {
-      'Title': 'Long Cloak',
-      'Price': 78.25
-    }
-  ];
+  initialData = [];
+  
+  $.ajax({
+      url: 'Home/AllGift',
+      dataType: 'json',
+      async: false,
+      success: function (data) {
+          initialData = data;
+      }
+  });
 
   Gift = (function() {
     function Gift(title, price) {
