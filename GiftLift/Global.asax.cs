@@ -1,4 +1,5 @@
 ﻿using GiftLift.Infrastructure;
+using GiftList.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

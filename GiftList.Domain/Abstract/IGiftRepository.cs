@@ -8,6 +8,6 @@ namespace GiftList.Domain.Abstract
 {
     public interface IGiftRepository
     {
-        IQueryable<Gift> Gifts { get; set; }
+        IQueryable<Gift> Gifts { get; }
     }
 }

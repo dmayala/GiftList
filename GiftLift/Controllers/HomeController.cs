@@ -25,7 +25,7 @@ namespace GiftLift.Controllers
             return View();
         }
 
-        public ActionResult AllGift()
+        public JsonResult AllGift()
         {
             return Json(repository.Gifts.ToList(), JsonRequestBehavior.AllowGet);
         }

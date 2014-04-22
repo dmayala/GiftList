@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Moq;
+using GiftList.Domain.Concrete;
 
 namespace GiftLift.Infrastructure
 {
@@ -29,12 +30,7 @@ namespace GiftLift.Infrastructure
 
         private void AddBindings()
         {
-            Mock<IGiftRepository> mock = new Mock<IGiftRepository>();
-            mock.Setup(m => m.Gifts).Returns(new List<Gift> {
-                new Gift { Title = "Tall Hat", Price = 49.95 }
-            }.AsQueryable());
-
-            kernel.Bind<IGiftRepository>().ToConstant(mock.Object);
+            kernel.Bind<IGiftRepository>().To<EFGiftRepository>();
         }
     }
 }
