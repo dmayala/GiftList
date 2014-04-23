@@ -14,24 +14,24 @@ namespace GiftList.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void Can_Return_Gifts_JSON()
+        public void Can_Return_Gifts()
         {
             // Arrange
             Mock<IGiftRepository> mock = new Mock<IGiftRepository>();
             mock.Setup(m => m.Gifts).Returns(new Gift[] {
-                new Gift {Title = "Tall Hat", Price = 49.95 },
-                new Gift { Title = "Toy Train", Price = 29.99 }
+                new Gift {Id = 101, Title = "Tall Hat", Price = 49.95 },
+                new Gift { Id = 107, Title = "Toy Train", Price = 29.99 }
             }.AsQueryable());
 
 
-            HomeController ctrl = new HomeController(mock.Object);
+            GiftController ctrl = new GiftController(mock.Object);
 
             // Act
-            List<Gift> result = ctrl.AllGift().Data as List<Gift>;
+            List<Gift> result = ctrl.Get().ToList();
 
             // Assert
-            Assert.AreEqual("Tall Hat", result[0].Title);
-            Assert.AreEqual("Toy Train", result[1].Title);
+            Assert.AreEqual(101, result[0].Id);
+            Assert.AreEqual(107, result[1].Id);
         }
     }
 }

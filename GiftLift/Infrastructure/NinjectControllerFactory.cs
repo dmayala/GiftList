@@ -1,14 +1,7 @@
-﻿using GiftList.Domain;
-using GiftList.Domain.Abstract;
-using Ninject;
+﻿using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Moq;
-using GiftList.Domain.Concrete;
 
 namespace GiftLift.Infrastructure
 {
@@ -16,10 +9,9 @@ namespace GiftLift.Infrastructure
     {
         private IKernel kernel;
 
-        public NinjectControllerFactory()
+        public NinjectControllerFactory(IKernel kernel)
         {
-            kernel = new StandardKernel();
-            AddBindings();
+            this.kernel = kernel;
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -28,9 +20,6 @@ namespace GiftLift.Infrastructure
             return controllerType == null ? null : (IController) kernel.Get(controllerType);
         }
 
-        private void AddBindings()
-        {
-            kernel.Bind<IGiftRepository>().To<EFGiftRepository>();
-        }
+        
     }
 }

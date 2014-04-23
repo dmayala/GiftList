@@ -1,33 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using GiftList.Domain.Abstract;
+﻿using System.Web.Mvc;
 
 namespace GiftLift.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller 
     {
-        private IGiftRepository repository;
-
-        public HomeController(IGiftRepository repository)
-        {
-            this.repository = repository;
-        }
-
-        // GET: /Home/
         public ActionResult Index()
         {
             return View();
-        }
-
-        public JsonResult AllGift()
-        {
-            return Json(repository.Gifts.ToList(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -5,7 +5,7 @@
   initialData = [];
   
   $.ajax({
-      url: 'Home/AllGift',
+      url: 'api/gift',
       dataType: 'json',
       async: false,
       success: function (data) {
