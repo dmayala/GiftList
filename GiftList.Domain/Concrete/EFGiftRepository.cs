@@ -18,5 +18,25 @@ namespace GiftList.Domain.Concrete
                 return context.Gifts;
             }
         }
+
+        public void SaveGift(Gift gift)
+        {
+            if (gift.Id != 0)
+            {
+                Gift match = context.Gifts.FirstOrDefault(m => m.Id == gift.Id);
+                match.Price = gift.Price;
+                match.Title = gift.Title;
+            }
+            else
+            {
+                context.Gifts.Add(new Gift
+                {
+                    Title = gift.Title,
+                    Price = gift.Price
+                });
+            }
+
+            context.SaveChanges();
+        }
     }
 }

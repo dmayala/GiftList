@@ -9,5 +9,7 @@ namespace GiftList.Domain.Abstract
     public interface IGiftRepository
     {
         IQueryable<Gift> Gifts { get; }
+
+        void SaveGift(Gift gift);
     }
 }

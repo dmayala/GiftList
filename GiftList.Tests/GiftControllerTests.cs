@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace GiftList.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class GiftControllerTests
     {
         [TestMethod]
         public void Can_Return_Gifts()
@@ -32,6 +32,27 @@ namespace GiftList.Tests
             // Assert
             Assert.AreEqual(101, result[0].Id);
             Assert.AreEqual(107, result[1].Id);
+        }
+
+        [TestMethod]
+        public void Can_Save_Gift()
+        {
+            // Arrange
+            Mock<IGiftRepository> mock = new Mock<IGiftRepository>();
+            mock.Setup(m => m.Gifts).Returns(new Gift[] {
+               new Gift { Id = 1, Title = "Sword", Price = 11.85},
+               new Gift { Id = 2, Title = "Armor", Price = 15.60 }
+            }.AsQueryable());
+
+            Gift giftCandidate = new Gift { Id = 1, Title = "Katana", Price = 11};
+
+            GiftController ctrl = new GiftController(mock.Object);
+
+            // Act
+            ctrl.Post(giftCandidate);
+
+            // Assert
+            mock.Verify(m => m.SaveGift(giftCandidate));
         }
     }
 }

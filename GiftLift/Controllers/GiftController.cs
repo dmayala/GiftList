@@ -27,10 +27,14 @@ namespace GiftLift.Controllers
         //    return "value";
         //}
 
-        //// POST api/<controller>
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/<controller>
+        public void Post(Gift gift)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveGift(gift);
+            }
+        }
 
         //// PUT api/<controller>/5
         //public void Put(int id, [FromBody]string value)
