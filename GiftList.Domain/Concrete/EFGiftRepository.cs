@@ -19,7 +19,7 @@ namespace GiftList.Domain.Concrete
             }
         }
 
-        public void SaveGift(Gift gift)
+        public int SaveGift(Gift gift)
         {
             if (gift.Id != 0)
             {
@@ -36,7 +36,7 @@ namespace GiftList.Domain.Concrete
                 });
             }
 
-            context.SaveChanges();
+            return context.SaveChanges();
         }
     }
 }

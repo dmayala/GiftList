@@ -56,11 +56,16 @@
       this.save = (function(_this) {
         return function() {
           if ($('form').valid()) {
-            return $.post(location.href, {
-              'gifts': ko.toJSON(_this.gifts)
-            }, function(response) {
-              return toastr.success(response.count + ' item(s) saved!');
-            });
+              $.ajax({
+                  type: 'POST',
+                  contentType: "application/json",
+                  data: ko.toJSON(_this.gifts),
+                  url: 'api/gift',
+                  dataType: 'json',
+                  success: function (response) {
+                      toastr.success(response.Count + ' item(s) saved!');
+                  }
+              });
           }
         };
       })(this);

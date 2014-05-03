@@ -10,6 +10,6 @@ namespace GiftList.Domain.Abstract
     {
         IQueryable<Gift> Gifts { get; }
 
-        void SaveGift(Gift gift);
+        int SaveGift(Gift gift);
     }
 }

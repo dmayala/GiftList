@@ -1,5 +1,6 @@
 ﻿using GiftList.Domain;
 using GiftList.Domain.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -28,12 +29,19 @@ namespace GiftLift.Controllers
         //}
 
         // POST api/<controller>
-        public void Post(Gift gift)
+        public Object Post(IEnumerable<Gift> gifts)
         {
-            if (ModelState.IsValid)
+            int result = 0;
+
+            foreach (var i in gifts)
             {
-                repository.SaveGift(gift);
+                if (ModelState.IsValid)
+                {
+                    result += repository.SaveGift(i);
+                }
             }
+
+            return new { Count = result };
         }
 
         //// PUT api/<controller>/5
