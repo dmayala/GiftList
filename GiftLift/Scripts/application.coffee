@@ -8,33 +8,36 @@ initialData = [
     Price: 78.25
   }
 ]
-Gift = (title, price) ->
-  @Title = ko.observable(title)
-  @Price = ko.observable(price)
 
-ViewModel = ->
+class Gift
+  constructor: (title = "", price = "") ->
+    @Title = ko.observable(title)
+    @Price = ko.observable(price)
+    
+class ViewModel
   self = this
-  
-  # Values
-  self.gifts = ko.observableArray(initialData)
-  self.selectedGift = ko.observable()
-  self.editing = ko.observable(false)
+
+  constructor: ->
+    # Values
+    @gifts = ko.observableArray(initialData)
+    @selectedGift = ko.observable()
+    @editing = ko.observable(false)
   
   # Behaviors
-  self.addGift = ->
-    self.gifts.push new Gift("", "")
+  addGift: ->
+    self.gifts.push new Gift()
 
-  self.deleteGift = (gift) ->
+  deleteGift: (gift) ->
     self.gifts.remove gift
 
-  self.editItem = (gift) ->
+  editItem: (gift) ->
     self.selectedGift gift
     self.editing true
 
-  self.stopEditing = ->
+  stopEditing: ->
     self.editing false
 
-  self.save = ->
+  save: ->
     if $("form").valid()
       $.post location.href,
         gifts: ko.toJSON(self.gifts)
