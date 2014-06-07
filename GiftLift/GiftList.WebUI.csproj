@@ -210,13 +210,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\application.js" />
+    <None Include="Scripts\application.js.bak1" />
+    <Content Include="Scripts\application.js">
+      <DependentUpon>application.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\application.coffee" />
     <Content Include="Scripts\application.js.map">
-      <DependentUpon>application.js</DependentUpon>
+      <DependentUpon>application.js.bak1</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
