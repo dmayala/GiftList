@@ -1,0 +1,18 @@
+{
+  "name": "GiftList",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dmayala/GiftList",
+  "authors": [
+    "Daniel Ayala <dmayala@csupomona.edu>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.0"
+  }
+}
