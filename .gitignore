@@ -1,0 +1,32 @@
+# Heroku environmental variables.
+# https://devcenter.heroku.com/articles/config-vars
+.env
+
+# MS
+GiftLift/GiftList.WebUI.csproj.user
+GiftLift/bin/
+GiftLift/obj/
+GiftList.Domain/bin/
+GiftList.Domain/obj/
+GiftList.Tests/bin/
+GiftList.Tests/obj/
+GiftList.v12.suo
+packages
+
+# npm packages
+node_modules
+
+# old js
+client/src/oldjs/
+
+# bower packages
+Scripts/vendor/
+
+# Mac
+.DS_Store
+
+# Emacs
+*~
+
+# thumbnails
+Thumbs.db

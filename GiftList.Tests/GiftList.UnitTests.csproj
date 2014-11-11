@@ -107,7 +107,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GiftLift\GiftList.WebUI.csproj">
+    <ProjectReference Include="..\GiftList\GiftList.WebUI.csproj">
       <Project>{c7ca88a7-da62-4711-b93e-766f8538899d}</Project>
       <Name>GiftList.WebUI</Name>
     </ProjectReference>
