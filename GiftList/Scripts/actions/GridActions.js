@@ -1,25 +1,25 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var GiftListConstants = require('../constants/GiftListConstants');
+var GridConstants = require('../constants/GridConstants');
 
-var GiftListActions = {
+var GridActions = {
 
   addGift: function (data) {
     AppDispatcher.handleViewAction({
-      actionType: GiftListConstants.ADD_GIFT,
+      actionType: GridConstants.ADD_GIFT,
       data: data
     });
   },
 
   deleteGift: function (id) {
     AppDispatcher.handleViewAction({
-      actionType: GiftListConstants.DELETE_GIFT,
+      actionType: GridConstants.DELETE_GIFT,
       id: id
     });
   },
 
   editGift: function (id, data) {
     AppDispatcher.handleViewAction({
-      actionType: GiftListConstants.DELETE_GIFT,
+      actionType: GridConstants.DELETE_GIFT,
       id: id
     });
   }
