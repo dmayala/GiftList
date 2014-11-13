@@ -10,19 +10,19 @@ var GridActions = {
     });
   },
 
-  deleteGift: function (id) {
+  removeGift: function (id) {
     AppDispatcher.handleViewAction({
-      actionType: GridConstants.DELETE_GIFT,
+      actionType: GridConstants.REMOVE_GIFT,
       id: id
     });
   },
 
   editGift: function (id, data) {
     AppDispatcher.handleViewAction({
-      actionType: GridConstants.DELETE_GIFT,
+      actionType: GridConstants.EDIT_GIFT,
       id: id
     });
   }
 };
 
-module.exports = GiftListActions;
+module.exports = GridActions;

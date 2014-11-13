@@ -9,22 +9,28 @@ var _gifts = {
   "87b4bd50-6a29-11e4-8c23-edcf6eae63be": {
     id: "87b4bd50-6a29-11e4-8c23-edcf6eae63be",
     name: "Tall Hat",
-    price: 39.95
+    price: "39.95"
   },
   "87b4bd51-6a29-11e4-8c23-edcf6eae63be": {
     id: "87b4bd51-6a29-11e4-8c23-edcf6eae63be",
     name: "Long Cloak",
-    price: 120.00
+    price: "120.00"
   }
 };
 
 var add = function (data) {
+  data = data || {}
+
   var id = uuid.v1();
   _gifts[id] = {
     id: id,
-    name: data.name,
-    price: data.price
+    name: data.name || '',
+    price: data.price || ''
   };
+};
+
+var remove = function (id) {
+  delete _gifts[id];
 };
 
 var GiftStore = _.extend({}, EventEmitter.prototype, {
@@ -52,6 +58,9 @@ AppDispatcher.register(function (payload) {
   switch (action.actionType) {
     case GridConstants.ADD_GIFT:
       add(action.data);
+      break;
+    case GridConstants.REMOVE_GIFT:
+      remove(action.id)
       break;
     default:
       return true;

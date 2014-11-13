@@ -1,5 +1,8 @@
 var React = require('react');
 var GiftItem = require('./GiftItem.react');
+var GiftTable = require('./GiftTable.react');
+var GiftHeader = require('./GiftHeader.react');
+var GiftButtonPanel = require('./GiftButtonPanel.react');
 
 var MainSection = React.createClass({
   render: function () {
@@ -10,23 +13,13 @@ var MainSection = React.createClass({
       gifts.push(<GiftItem key={allGifts[key].id} gift={allGifts[key]} />);
     }
 
+    var body = gifts.length ? <GiftTable gifts={gifts} /> : null;
+
     return (
       <form>
-        <p>You have asked for <span>{gifts.length}</span> gift(s)</p>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Gift name</th>
-              <th>Price</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {gifts}
-          </tbody>
-        </table>
-        <button className="btn btn-default">Add Gift</button>
-        <button className="btn btn-primary">Submit</button>
+        <GiftHeader numGifts={gifts.length} />
+        {body}
+        <GiftButtonPanel />
       </form>
     );
   }
