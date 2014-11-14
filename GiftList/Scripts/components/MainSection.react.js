@@ -16,12 +16,17 @@ var MainSection = React.createClass({
     var body = gifts.length ? <GiftTable gifts={gifts} /> : null;
 
     return (
-      <form>
+      <form ref="form">
         <GiftHeader numGifts={gifts.length} />
         {body}
-        <GiftButtonPanel />
+        <GiftButtonPanel numGifts={gifts.length} submitHandler={this._onSubmit} />
       </form>
     );
+  },
+
+  _onSubmit: function (e) {
+    e.preventDefault();
+    alert('Could not transfer to server');
   }
 });
 

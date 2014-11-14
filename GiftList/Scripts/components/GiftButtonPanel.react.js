@@ -6,7 +6,13 @@ var GiftButtonPanel = React.createClass({
     return (
       <div className="btn-toolbar">
         <button onClick={this.addGift} className="btn btn-default">Add Gift</button>
-        <button className="btn btn-primary">Submit</button>
+        <button 
+          disabled={!this.props.numGifts ? 'disabled' : ''}
+          onClick={this.props.submitHandler}
+          type="submit"
+          className="btn btn-primary">
+          Submit
+        </button>
       </div>
     );
   },

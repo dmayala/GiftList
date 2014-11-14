@@ -21,6 +21,7 @@ client/src/oldjs/
 
 # bower packages
 Scripts/vendor/
+bundle.js
 
 # Mac
 .DS_Store
