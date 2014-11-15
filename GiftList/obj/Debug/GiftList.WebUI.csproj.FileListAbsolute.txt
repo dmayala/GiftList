@@ -100,7 +100,6 @@ C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Net.Http.Formatting.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Helpers.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Http.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Http.WebHost.dll
-C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Mvc.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Optimization.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Razor.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.WebPages.Deployment.dll
@@ -118,7 +117,6 @@ C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Net.Http.Formatting.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Helpers.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Http.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Http.WebHost.xml
-C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Mvc.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Razor.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.WebPages.xml
 C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.WebPages.Deployment.xml
@@ -142,3 +140,5 @@ C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\Microsoft.Owin.Security.Micros
 C:\Users\Danny\Source\Repos\GiftList\GiftList\obj\Debug\GiftList.WebUI.csprojResolveAssemblyReference.cache
 C:\Users\Danny\Source\Repos\GiftList\GiftList\obj\Debug\GiftList.dll
 C:\Users\Danny\Source\Repos\GiftList\GiftList\obj\Debug\GiftList.pdb
+C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Mvc.dll
+C:\Users\Danny\Source\Repos\GiftList\GiftList\bin\System.Web.Mvc.xml
