@@ -1,7 +1,7 @@
 var React = require('react');
 var GridActions = require('../actions/GridActions');
 
-var GiftItem = React.createClass({
+var GiftItem = React.createClass({displayName: 'GiftItem',
 
   getInitialState: function() {
     var gift = this.props.gift;
@@ -12,11 +12,11 @@ var GiftItem = React.createClass({
   },
   render: function () {
     return (
-      <tr>
-        <td><input onChange={this.handleChange.bind(this, 'name')} value={this.state.name} /></td>
-        <td><input onChange={this.handleChange.bind(this, 'price')} value={this.state.price} /></td>
-        <td><button onClick={this.remove} className="btn btn-danger">Delete</button></td>
-      </tr>
+      React.createElement("tr", null, 
+        React.createElement("td", null, React.createElement("input", {onChange: this.handleChange.bind(this, 'name'), value: this.state.name})), 
+        React.createElement("td", null, React.createElement("input", {onChange: this.handleChange.bind(this, 'price'), value: this.state.price})), 
+        React.createElement("td", null, React.createElement("button", {onClick: this.remove, className: "btn btn-danger"}, "Delete"))
+      )
     );
   },
 

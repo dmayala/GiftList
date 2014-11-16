@@ -1,9 +1,9 @@
 var React = require('react');
 
-var GiftHeader = React.createClass({
+var GiftHeader = React.createClass({displayName: 'GiftHeader',
   render: function () {
     return (
-      <p>You have asked for <span>{this.props.numGifts}</span> gift(s)</p>
+      React.createElement("p", null, "You have asked for ", React.createElement("span", null, this.props.numGifts), " gift(s)")
     );
   }
 });

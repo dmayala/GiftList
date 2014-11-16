@@ -8,7 +8,7 @@ function getGiftStoreState() {
   }
 }
 
-var GridApp = React.createClass({
+var GridApp = React.createClass({displayName: 'GridApp',
 
   getInitialState: function () {
     return getGiftStoreState();
@@ -28,7 +28,7 @@ var GridApp = React.createClass({
 
   render: function () {
     return (
-      <MainSection allGifts={this.state.allGifts} /> 
+      React.createElement(MainSection, {allGifts: this.state.allGifts}) 
     );
   }
 

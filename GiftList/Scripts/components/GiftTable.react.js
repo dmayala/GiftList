@@ -1,20 +1,20 @@
 var React = require('react');
 
-var GiftTable = React.createClass({
+var GiftTable = React.createClass({displayName: 'GiftTable',
   render: function () {
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Gift name</th>
-            <th>Price</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.gifts}
-        </tbody>
-      </table>
+      React.createElement("table", {className: "table"}, 
+        React.createElement("thead", null, 
+          React.createElement("tr", null, 
+            React.createElement("th", null, "Gift name"), 
+            React.createElement("th", null, "Price"), 
+            React.createElement("th", null)
+          )
+        ), 
+        React.createElement("tbody", null, 
+          this.props.gifts
+        )
+      )
     );
   },
 });

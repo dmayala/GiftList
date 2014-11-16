@@ -1,19 +1,19 @@
 var React = require('react');
 var GridAction = require('../actions/GridActions')
 
-var GiftButtonPanel = React.createClass({
+var GiftButtonPanel = React.createClass({displayName: 'GiftButtonPanel',
   render: function () {
     return (
-      <div className="btn-toolbar">
-        <button onClick={this.addGift} className="btn btn-default">Add Gift</button>
-        <button 
-          disabled={!this.props.numGifts ? 'disabled' : ''}
-          onClick={this.props.submitHandler}
-          type="submit"
-          className="btn btn-primary">
-          Submit
-        </button>
-      </div>
+      React.createElement("div", {className: "btn-toolbar"}, 
+        React.createElement("button", {onClick: this.addGift, className: "btn btn-default"}, "Add Gift"), 
+        React.createElement("button", {
+          disabled: !this.props.numGifts ? 'disabled' : '', 
+          onClick: this.props.submitHandler, 
+          type: "submit", 
+          className: "btn btn-primary"}, 
+          "Submit"
+        )
+      )
     );
   },
 
