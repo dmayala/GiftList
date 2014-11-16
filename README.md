@@ -1,4 +1,4 @@
 GiftList
 ========
 
-A Knockout.js grid application.
+A Flux/React grid application.

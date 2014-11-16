@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftList.WebUI", "GiftLift\GiftList.WebUI.csproj", "{C7CA88A7-DA62-4711-B93E-766F8538899D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftList.WebUI", "GiftList\GiftList.WebUI.csproj", "{C7CA88A7-DA62-4711-B93E-766F8538899D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftList.Domain", "GiftList.Domain\GiftList.Domain.csproj", "{FB0C618F-BD8B-49D9-B4DE-B4611A075404}"
 EndProject
